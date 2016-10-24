@@ -20,6 +20,7 @@
   "homepage": "https://github.com/rogerxu/webpack-demo#readme",
   "devDependencies": {
     "html-webpack-plugin": "^2.24.0",
-    "webpack": "^1.13.2"
+    "webpack": "^1.13.2",
+    "webpack-validator": "^2.2.9"
   }
 }

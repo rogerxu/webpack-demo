@@ -1,4 +1,5 @@
 const path = require('path');
+const validate = require('webpack-validator');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const PATHS = {
@@ -6,7 +7,7 @@ const PATHS = {
   build: path.join(__dirname, 'build')
 };
 
-module.exports = {
+const config = {
   entry: {
     app: PATHS.app
   },
@@ -20,3 +21,5 @@ module.exports = {
     })
   ]
 };
+
+module.exports = validate(config);
