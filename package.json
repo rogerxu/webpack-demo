@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/rogerxu/webpack-demo#readme",
   "devDependencies": {
+    "clean-webpack-plugin": "^0.1.13",
     "css-loader": "^0.25.0",
     "html-webpack-plugin": "^2.24.0",
     "style-loader": "^0.13.1",
