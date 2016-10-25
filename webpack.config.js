@@ -1,6 +1,7 @@
 const path = require('path');
 const validate = require('webpack-validator');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const merge = require('webpack-merge');
 
 const parts = require('./libs/parts');
 
@@ -24,19 +25,20 @@ const common = {
   ]
 };
 
-const devServerConfig = parts.devServer({
-  host: process.env.HOST,
-  port: process.env.PORT
-});
+var config;
 
-const config = Object.assign({}, common);
-
-for (let key of Object.keys(devServerConfig)) {
-  if (key === "plugins") {
-    config[key] = [...common.plugins, ...devServerConfig.plugins];
-  } else {
-    config[key] = devServerConfig[key];
-  }
+switch (process.env.npm_lifecycle_event) {
+  case 'build':
+    config = merge(common, {});
+    break;
+  default:
+    config = merge(
+      common,
+      parts.devServer({
+        host: process.env.HOST,
+        port: process.env.PORT
+      })
+    );
 }
 
 module.exports = validate(config);
