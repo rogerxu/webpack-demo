@@ -1,6 +1,8 @@
 const path = require('path');
 const validate = require('webpack-validator');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const StyleLintPlugin = require('stylelint-webpack-plugin');
+
 const merge = require('webpack-merge');
 
 const parts = require('./libs/parts');
@@ -28,11 +30,6 @@ const common = {
   module: {
     preLoaders: [
       {
-        test: /\.css$/,
-        loaders: ['postcss'],
-        include: PATHS.app
-      },
-      {
         test: /\.jsx?$/,
         loaders: ['eslint'],
         include: PATHS.app
@@ -40,13 +37,17 @@ const common = {
     ]
   },
   plugins: [
+    new StyleLintPlugin({
+      configFile: '.stylelintrc.js',
+      files: ['**/*.css', '**/*.sass', '**/*.scss'],
+      failOnError: true
+    }),
     new HtmlWebpackPlugin({
       title: 'Webpack demo'
     })
   ],
   postcss: function() {
     return [
-      require('stylelint'),
       require('precss'),
       require('autoprefixer')
     ];
