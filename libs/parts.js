@@ -140,3 +140,37 @@ exports.purifyCSS = function(paths) {
     ]
   };
 };
+
+exports.embedImage = function(paths) {
+  return {
+    module: {
+      loaders: [
+        {
+          test: /\.(jpg|png)$/,
+          loader: 'url',
+          query: {
+            limit: 25000
+          },
+          include: paths
+        }
+      ]
+    }
+  };
+};
+
+exports.loadImage = function(paths) {
+  return {
+    module: {
+      loaders: [
+        {
+          test: /\.(jpg|png)$/,
+          loader: 'file',
+          query: {
+            name: '[path][name].[hash].[ext]'
+          },
+          include: paths
+        }
+      ]
+    }
+  };
+};

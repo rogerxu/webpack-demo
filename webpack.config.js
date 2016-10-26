@@ -11,6 +11,7 @@ const PATHS = {
     path.join(__dirname, 'node_modules', 'purecss'),
     path.join(__dirname, 'app', 'main.css')
   ],
+  images: path.join(__dirname, 'app', 'images'),
   build: path.join(__dirname, 'build')
 };
 
@@ -56,7 +57,8 @@ switch (process.env.npm_lifecycle_event) {
       }),
       parts.minify(),
       parts.extractCSS(PATHS.style),
-      parts.purifyCSS([PATHS.app])
+      parts.purifyCSS([PATHS.app]),
+      parts.embedImage(PATHS.images)
     );
     break;
   default:
@@ -66,6 +68,7 @@ switch (process.env.npm_lifecycle_event) {
         devtool: 'eval-source-map'
       },
       parts.setupCSS(PATHS.style),
+      parts.loadImage(PATHS.images),
       parts.devServer({
         host: process.env.HOST,
         port: process.env.PORT
