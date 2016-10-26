@@ -28,6 +28,11 @@ const common = {
   module: {
     preLoaders: [
       {
+        test: /\.css$/,
+        loaders: ['postcss'],
+        include: PATHS.app
+      },
+      {
         test: /\.jsx?$/,
         loaders: ['eslint'],
         include: PATHS.app
@@ -38,54 +43,61 @@ const common = {
     new HtmlWebpackPlugin({
       title: 'Webpack demo'
     })
-  ]
+  ],
+  postcss: function() {
+    return [
+      require('stylelint'),
+      require('precss'),
+      require('autoprefixer')
+    ];
+  }
 };
 
 var config;
 
 switch (process.env.npm_lifecycle_event) {
-  case 'build':
-  case 'stats':
-    config = merge(
-      common,
-      {
-        devtool: 'source-map',
-        output: {
-          path: PATHS.build,
-          filename: '[name].[chunkhash].js',
-          chunkFilename: '[chunkhash].js'
-        }
-      },
-      parts.clean(PATHS.build),
-      parts.setFreeVariable(
-        'process.env.NODE_ENV',
-        'production'
-      ),
-      parts.extractBundle({
-        name: 'vendor',
-        entries: ['react']
-      }),
-      parts.minify(),
-      parts.extractCSS(PATHS.style),
-      parts.purifyCSS([PATHS.app]),
-      parts.embedImage(PATHS.images),
-      parts.loadFont(PATHS.fonts)
-    );
-    break;
-  default:
-    config = merge(
-      common,
-      {
-        devtool: 'eval-source-map'
-      },
-      parts.setupCSS(PATHS.style),
-      parts.loadImage(PATHS.images),
-      parts.loadFont(PATHS.fonts),
-      parts.devServer({
-        host: process.env.HOST,
-        port: process.env.PORT
-      })
-    );
+case 'build':
+case 'stats':
+  config = merge(
+    common,
+    {
+      devtool: 'source-map',
+      output: {
+        path: PATHS.build,
+        filename: '[name].[chunkhash].js',
+        chunkFilename: '[chunkhash].js'
+      }
+    },
+    parts.clean(PATHS.build),
+    parts.setFreeVariable(
+      'process.env.NODE_ENV',
+      'production'
+    ),
+    parts.extractBundle({
+      name: 'vendor',
+      entries: ['react']
+    }),
+    parts.minify(),
+    parts.extractCSS(PATHS.style),
+    parts.purifyCSS([PATHS.app]),
+    parts.embedImage(PATHS.images),
+    parts.loadFont(PATHS.fonts)
+  );
+  break;
+default:
+  config = merge(
+    common,
+    {
+      devtool: 'eval-source-map'
+    },
+    parts.setupCSS(PATHS.style),
+    parts.loadImage(PATHS.images),
+    parts.loadFont(PATHS.fonts),
+    parts.devServer({
+      host: process.env.HOST,
+      port: process.env.PORT
+    })
+  );
 }
 
 module.exports = validate(config, {

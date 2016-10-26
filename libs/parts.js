@@ -2,8 +2,6 @@ const webpack = require('webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const PurifyCSSPlugin = require('purifycss-webpack-plugin');
-const autoprefixer = require('autoprefixer');
-const precss = require('precss');
 
 exports.devServer = function(options) {
   return {
@@ -42,11 +40,8 @@ exports.setupCSS = function(paths) {
           include: paths
         }
       ]
-    },
-    postcss: function() {
-      return [autoprefixer, precss];
     }
-  }
+  };
 };
 
 exports.minify = function() {
@@ -123,10 +118,7 @@ exports.extractCSS = function(paths) {
     },
     plugins: [
       new ExtractTextPlugin('[name].[chunkhash].css')
-    ],
-    postcss: function() {
-      return [autoprefixer, precss];
-    }
+    ]
   };
 };
 
