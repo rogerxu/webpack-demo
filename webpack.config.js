@@ -25,6 +25,15 @@ const common = {
     path: PATHS.build,
     filename: '[name].js'
   },
+  module: {
+    preLoaders: [
+      {
+        test: /\.jsx?$/,
+        loaders: ['eslint'],
+        include: PATHS.app
+      }
+    ]
+  },
   plugins: [
     new HtmlWebpackPlugin({
       title: 'Webpack demo'
