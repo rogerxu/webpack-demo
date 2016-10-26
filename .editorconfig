@@ -10,18 +10,18 @@ trim_trailing_whitespace = true
 insert_final_newline = true
 
 # Format specific overrides
-[*.md]
+[**.md]
 trim_trailing_whitespace = false
 
-[*.{json,yml}]
+[**.{json,yml}]
 indent_style = space
 indent_size = 2
 
-[*.js]
+[**.js]
 indent_style = space
 indent_size = 2
 
-[*.{css,sass,scss}]
+[**.{css,sass,scss}]
 indent_style = space
 indent_size = 2
 
