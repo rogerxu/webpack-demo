@@ -12,6 +12,7 @@ const PATHS = {
     path.join(__dirname, 'app', 'main.css')
   ],
   images: path.join(__dirname, 'app', 'images'),
+  fonts: path.join(__dirname, 'app', 'fonts'),
   build: path.join(__dirname, 'build')
 };
 
@@ -58,7 +59,8 @@ switch (process.env.npm_lifecycle_event) {
       parts.minify(),
       parts.extractCSS(PATHS.style),
       parts.purifyCSS([PATHS.app]),
-      parts.embedImage(PATHS.images)
+      parts.embedImage(PATHS.images),
+      parts.loadFont(PATHS.fonts)
     );
     break;
   default:
@@ -69,6 +71,7 @@ switch (process.env.npm_lifecycle_event) {
       },
       parts.setupCSS(PATHS.style),
       parts.loadImage(PATHS.images),
+      parts.loadFont(PATHS.fonts),
       parts.devServer({
         host: process.env.HOST,
         port: process.env.PORT

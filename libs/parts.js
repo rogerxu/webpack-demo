@@ -174,3 +174,30 @@ exports.loadImage = function(paths) {
     }
   };
 };
+
+exports.loadFont = function(paths) {
+  return {
+    module: {
+      loaders: [
+        {
+          test: /\.woff$/,
+          loader: 'url',
+          query: {
+            name: 'font/[hash].[ext]',
+            limit: 5000,
+            mimetype: 'application/font-woff'
+          },
+          include: paths
+        },
+        {
+          test: /\.(ttf|eot)$/,
+          loader: 'file',
+          query: {
+            name: 'font/[hash].[ext]'
+          },
+          include: paths
+        }
+      ]
+    }
+  };
+};
