@@ -38,10 +38,7 @@ const common = {
     loaders: [
       {
         test: /\.jsx?$/,
-        loader: 'babel',
-        query: {
-          presets: ['es2015']
-        },
+        loaders: ['babel'],
         include: PATHS.app
       }
     ]
