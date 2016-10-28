@@ -34,6 +34,16 @@ const common = {
         loaders: ['eslint'],
         include: PATHS.app
       }
+    ],
+    loaders: [
+      {
+        test: /\.jsx?$/,
+        loader: 'babel',
+        query: {
+          presets: ['es2015']
+        },
+        include: PATHS.app
+      }
     ]
   },
   plugins: [
