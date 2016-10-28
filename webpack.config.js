@@ -10,8 +10,7 @@ const parts = require('./libs/parts');
 const PATHS = {
   app: path.join(__dirname, 'app'),
   style: [
-    path.join(__dirname, 'node_modules', 'purecss'),
-    path.join(__dirname, 'app', 'main.css')
+    path.join(__dirname, 'app', 'style', 'main.css')
   ],
   images: path.join(__dirname, 'app', 'images'),
   fonts: path.join(__dirname, 'app', 'fonts'),
