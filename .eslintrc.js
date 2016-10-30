@@ -18,6 +18,8 @@ module.exports = {
   "plugins": [],
   "rules": {
     // Best Practices
+    "array-callback-return": ["error"],
+    "no-useless-escape": ["error"],
 
     // Variables
 
@@ -26,9 +28,17 @@ module.exports = {
     // Stylistic Issues
     "indent": ["error", 2],
     "linebreak-style": ["error", "unix"],
+    "no-array-constructor": ["error"],
+    "no-new-object": ["error"],
+    "quote-props": ["error", "as-needed"],
     "quotes": ["error", "single"],
-    "semi": ["error", "always"]
+    "semi": ["error", "always"],
 
     // ECMAScript 6
+    "prefer-const": ["error"],
+    "no-var": ["error"],
+    "object-shorthand": ["error"],
+    "prefer-template": ["error"],
+    "template-curly-spacing": ["error", "never"]
   }
 };
