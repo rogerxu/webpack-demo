@@ -4,6 +4,7 @@ module.exports = {
     "eslint:recommended"
     // "eslint-config-airbnb"
   ],
+  "parser": "babel-eslint",
   "parserOptions": {
     "ecmaVersion": 6,
     "sourceType": "module",
