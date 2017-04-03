@@ -4,8 +4,8 @@
   "description": "Webpack Demo",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server",
-    "build": "webpack",
+    "start": "webpack-dev-server --progress",
+    "build": "webpack --progress",
     "lint": "eslint app webpack.config.babel.js --ext .js",
     "test": "yarn lint",
     "precommit": "yarn test",
