@@ -23,7 +23,8 @@
   },
   "homepage": "https://github.com/rogerxu/webpack-demo#readme",
   "dependencies": {
-    "babel-polyfill": "^6.23.0"
+    "babel-polyfill": "^6.23.0",
+    "lodash": "^4.17.4"
   },
   "devDependencies": {
     "babel-cli": "^6.24.0",
