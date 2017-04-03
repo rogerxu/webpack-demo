@@ -12,7 +12,11 @@ module.exports = {
     "browser": true,
     "node": true,
   },
-  "plugins": [],
+  "plugins": [
+    "compat",
+  ],
+  "globals": {
+  },
   "rules": {
     // Best Practices
     "array-callback-return": ["error"],
@@ -64,7 +68,7 @@ module.exports = {
     "no-underscore-dangle": ["error"],
     "no-unneeded-ternary": ["error", {"defaultAssignment": false}],
     "no-whitespace-before-property": ["error"],
-    "max-len": ["error", {"code": 100, "tabWidth": 2}],
+    "max-len": ["warn", {"code": 100, "tabWidth": 2}],
     "object-curly-spacing": ["error", "always"],
     "one-var": ["error", "never"],
     "padded-blocks": ["error", "never"],
@@ -96,6 +100,9 @@ module.exports = {
     "prefer-rest-params": ["error"],
     "prefer-spread": ["error"],
     "prefer-template": ["error"],
-    "template-curly-spacing": ["error", "never"]
+    "template-curly-spacing": ["error", "never"],
+
+    // compat
+    "compat/compat": "error",
   }
 };
