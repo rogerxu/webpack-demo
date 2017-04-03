@@ -1,4 +1,5 @@
 import path from 'path';
+import webpack from 'webpack';
 
 export default {
   entry: ['./app/index.js'],
@@ -10,5 +11,9 @@ export default {
   devtool: 'cheap-eval-source-map',
   devServer: {
     compress: true,
+    hot: true,
   },
+  plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+  ],
 };
