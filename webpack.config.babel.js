@@ -3,7 +3,10 @@ import webpack from 'webpack';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 
 export default {
-  entry: ['./app/index.js'],
+  entry: {
+    main: './app/index.js',
+    vendor: 'lodash',
+  },
   output: {
     filename: '[name].bundle.js',
     path: path.resolve(__dirname, 'dist'),
@@ -28,6 +31,9 @@ export default {
     hot: true,
   },
   plugins: [
+    new webpack.optimize.CommonsChunkPlugin({
+      names: ['vendor', 'manifest'],
+    }),
     new webpack.HotModuleReplacementPlugin(),
     new ExtractTextPlugin('styles.css'),
   ],
