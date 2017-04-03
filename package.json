@@ -7,7 +7,9 @@
     "start": "yarn dev:start",
     "dev:start": "webpack-dev-server --progress",
     "prod:build": "rimraf dist && cross-env NODE_ENV=production webpack -p --progress",
-    "lint": "eslint app config webpack.config.babel.js --ext .js",
+    "lint": "yarn lint:eslint && yarn lint:stylelint",
+    "lint:eslint": "eslint app config webpack.config.babel.js --ext .js",
+    "lint:stylelint": "stylelint \"app/**/*.css\"",
     "test": "yarn lint",
     "precommit": "yarn test",
     "prepush": "yarn test && yarn prod:build"
