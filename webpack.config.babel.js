@@ -9,6 +9,9 @@ export default {
     publicPath: '/dist/', // webpack output is served from this path
   },
   devtool: 'cheap-eval-source-map',
+  resolve: {
+    extensions: ['.js'],
+  },
   devServer: {
     compress: true,
     hot: true,
