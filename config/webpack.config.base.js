@@ -1,15 +1,16 @@
 import path from 'path';
 import webpack from 'webpack';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
 
 export default {
   entry: {
     main: './app/index.js',
-    vendor: 'lodash',
+    vendor: ['lodash'],
   },
   output: {
+    path: path.resolve(__dirname, '../dist'),
     filename: '[name].bundle.js',
-    path: path.resolve(__dirname, 'dist'),
     publicPath: '/dist/', // webpack output is served from this path
   },
   module: {
@@ -31,5 +32,8 @@ export default {
     }),
     new webpack.HotModuleReplacementPlugin(),
     new ExtractTextPlugin('styles.css'),
+    new HtmlWebpackPlugin({
+      title: 'Hello Webpack',
+    }),
   ],
 };
