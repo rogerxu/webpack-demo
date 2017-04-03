@@ -29,9 +29,9 @@ export default {
   plugins: [
     new webpack.optimize.CommonsChunkPlugin({
       names: ['vendor', 'manifest'],
+      minChunks: Infinity,
     }),
-    new webpack.HotModuleReplacementPlugin(),
-    new ExtractTextPlugin('styles.css'),
+    new ExtractTextPlugin('[name].[contenthash].css'),
     new HtmlWebpackPlugin({
       title: 'Hello Webpack',
     }),

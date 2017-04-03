@@ -10,6 +10,7 @@ export default webpackMerge(baseConfig, {
     hot: true,
   },
   plugins: [
+    new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin(),
   ],
 });
