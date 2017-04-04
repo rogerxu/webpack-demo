@@ -1,10 +1,18 @@
 import lo from 'lodash';
+import button from './button';
 
-export default function () {
-  const element = document.createElement('h1');
+const Container = () => {
+  const container = document.createElement('div');
+  container.className = 'container';
 
-  element.className = 'pure-button';
-  element.innerHTML = lo.join(['Hello', 'Webpack'], ' ');
+  const title = document.createElement('h1');
+  title.innerHTML = lo.join(['Hello', 'Webpack'], ' ');
+  container.appendChild(title);
 
-  return element;
-}
+  const btn = button();
+  container.appendChild(btn);
+
+  return container;
+};
+
+export default Container;

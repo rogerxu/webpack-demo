@@ -1,5 +1,6 @@
 import webpack from 'webpack';
 import webpackMerge from 'webpack-merge';
+import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import ChunkManifestPlugin from 'chunk-manifest-webpack-plugin';
 import WebpackChunkHash from 'webpack-chunk-hash';
 
@@ -18,5 +19,6 @@ export default webpackMerge(baseConfig, {
       filename: 'chunk-manifest.json',
       manifestVariable: 'webpackManifest',
     }),
+    new ExtractTextPlugin('[name].[contenthash].css'),
   ],
 });

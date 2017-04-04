@@ -2,6 +2,7 @@ import path from 'path';
 import webpack from 'webpack';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
+import htmlWebpackTemplate from 'html-webpack-template';
 
 export default {
   entry: {
@@ -31,9 +32,12 @@ export default {
       names: ['vendor', 'manifest'],
       minChunks: Infinity,
     }),
-    new ExtractTextPlugin('[name].[contenthash].css'),
     new HtmlWebpackPlugin({
       title: 'Hello Webpack',
+      template: htmlWebpackTemplate,
+      links: [
+        '/css/bootstrap.min.css',
+      ],
     }),
   ],
 };
