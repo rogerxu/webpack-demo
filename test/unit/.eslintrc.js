@@ -11,5 +11,6 @@ module.exports = {
   "globals": {
   },
   "rules": {
+    "dot-notation": ["error", {"allowKeywords": true}],
   }
 };
