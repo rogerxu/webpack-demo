@@ -31,6 +31,15 @@ module.exports = function (config) {
     },
 
     webpack: {
+      module: {
+        rules: [
+          {
+            test: /\.js$/,
+            use: 'babel-loader',
+            exclude: /node_modules/,
+          },
+        ],
+      },
       devtool: 'inline-source-map',
     },
 
@@ -60,7 +69,7 @@ module.exports = function (config) {
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['Chrome'],
+    browsers: ['Chrome', 'PhantomJS'],
 
 
     // Continuous Integration mode
