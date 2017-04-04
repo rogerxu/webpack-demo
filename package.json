@@ -11,10 +11,11 @@
     "lint:eslint": "eslint app config test webpack.config.babel.js --ext .js",
     "lint:stylelint": "stylelint \"app/**/*.css\"",
     "test": "yarn lint && yarn test:unit",
-    "test:unit": "cross-env NODE_ENV=test yarn test:jest",
+    "test:unit": "yarn test:jest",
     "test:jest": "jest --coverage",
-    "test:mocha": "mocha",
-    "test:karma": "karma start test/unit/karma.conf.js --single-run",
+    "debug:jest": "devtool ./node_modules/jest/bin/jest -i --no-cache --config=test/jest.debug.json",
+    "test:mocha": "cross-env NODE_ENV=test mocha",
+    "test:karma": "cross-env NODE_ENV=coverage karma start test/unit/karma.conf.js --single-run",
     "precommit": "yarn test",
     "prepush": "yarn test && yarn prod:build"
   },
@@ -45,6 +46,7 @@
     "chunk-manifest-webpack-plugin": "^1.0.0",
     "cross-env": "^4.0.0",
     "css-loader": "^0.28.0",
+    "devtool": "^2.3.1",
     "eslint": "^3.19.0",
     "eslint-plugin-compat": "^1.0.2",
     "extract-text-webpack-plugin": "^2.1.0",
@@ -52,6 +54,7 @@
     "html-webpack-template": "^6.0.1",
     "husky": "^0.13.3",
     "jest": "^19.0.2",
+    "jest-environment-node-debug": "^2.0.0",
     "karma": "^1.5.0",
     "karma-chrome-launcher": "^2.0.0",
     "karma-coverage": "^1.1.1",
@@ -76,5 +79,9 @@
   "browserslist": [
     "> 1%",
     "last 2 versions"
-  ]
+  ],
+  "jest": {
+    "verbose": true,
+    "browser": true
+  }
 }

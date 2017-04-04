@@ -1,0 +1,8 @@
+{
+  "verbose": true,
+  "resetModules": true,
+  "timers": "fake",
+  "collectCoverage": false,
+  "resetModules": true,
+  "testEnvironment": "jest-environment-node-debug"
+}
