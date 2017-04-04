@@ -2,12 +2,12 @@ import path from 'path';
 import webpack from 'webpack';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
-import htmlWebpackTemplate from 'html-webpack-template';
 
 export default {
   entry: {
-    main: './app/index.js',
-    vendor: ['lodash'],
+    main: './app/main.js',
+    polyfills: './app/polyfills.js',
+    vendor: './app/vendor.js',
   },
   output: {
     path: path.resolve(__dirname, '../dist'),
@@ -29,15 +29,21 @@ export default {
   },
   plugins: [
     new webpack.optimize.CommonsChunkPlugin({
-      names: ['vendor', 'manifest'],
+      names: ['vendor', 'polyfills'],
+      minChunks: (module, count) => {
+        const isCommonModule = count >= 2;
+        const isVendorModule = module.context && module.context.indexOf('node_modules') !== -1;
+
+        return isCommonModule && isVendorModule;
+      },
+    }),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'manifest',
       minChunks: Infinity,
     }),
     new HtmlWebpackPlugin({
       title: 'Hello Webpack',
-      template: htmlWebpackTemplate,
-      links: [
-        '/css/bootstrap.min.css',
-      ],
+      template: 'app/index.ejs',
     }),
   ],
 };
