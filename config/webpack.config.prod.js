@@ -9,7 +9,7 @@ import baseConfig from './webpack.config.base';
 export default webpackMerge(baseConfig, {
   output: {
     filename: '[name].[chunkhash].js',
-    chunkFilename: '[name].[chunkhash].js',
+    chunkFilename: '[name].[chunkhash].chunk.js',
   },
   devtool: 'cheap-module-source-map',
   plugins: [

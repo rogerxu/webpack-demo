@@ -27,6 +27,17 @@ export default {
           use: ['css-loader', 'postcss-loader'],
         }),
       },
+      {
+        test: /\.(png|jpe?g|gif|svg|ico)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: 'images/[name].[ext]',
+            },
+          },
+        ],
+      },
     ],
   },
   resolve: {
