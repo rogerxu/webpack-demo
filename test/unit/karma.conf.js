@@ -31,6 +31,7 @@ module.exports = function (config) {
     },
 
     webpack: {
+      devtool: 'inline-source-map',
       module: {
         rules: [
           {
@@ -40,14 +41,21 @@ module.exports = function (config) {
           },
         ],
       },
-      devtool: 'inline-source-map',
     },
 
 
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['spec'],
+    reporters: ['spec', 'coverage'],
+
+    coverageReporter: {
+      dir: '../../coverage',
+      reporters: [
+        { type: 'lcov', subdir: '.' },
+        { type: 'text-summary' },
+      ],
+    },
 
 
     // web server port
@@ -69,7 +77,7 @@ module.exports = function (config) {
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['Chrome', 'PhantomJS'],
+    browsers: ['PhantomJS'],
 
 
     // Continuous Integration mode
