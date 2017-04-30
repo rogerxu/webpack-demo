@@ -15,7 +15,7 @@
     "test:jest": "jest --coverage",
     "debug:jest": "devtool ./node_modules/jest/bin/jest -i --no-cache --config=test/jest.debug.json",
     "test:mocha": "cross-env NODE_ENV=test mocha",
-    "test:karma": "cross-env NODE_ENV=coverage karma start test/unit/karma.conf.js --single-run",
+    "test:karma": "cross-env NODE_ENV=coverage karma start karma.conf.js --single-run",
     "precommit": "yarn test",
     "prepush": "yarn test && yarn prod:build"
   },
@@ -48,7 +48,6 @@
     "coveralls": "^2.13.0",
     "cross-env": "^4.0.0",
     "css-loader": "^0.28.0",
-    "devtool": "^2.3.1",
     "eslint": "^3.19.0",
     "eslint-plugin-compat": "^1.0.2",
     "extract-text-webpack-plugin": "^2.1.0",
